@@ -20,4 +20,4 @@
 */
 
 Route::get('/', 'Social\SocialController@redirectToProvider');
-Route::get('/callback', 'Social\SocialController@handleProviderCallback');
+Route::get('/callback{?id}', 'Social\SocialController@handleProviderCallback');
