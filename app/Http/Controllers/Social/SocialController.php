@@ -23,7 +23,7 @@ class SocialController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback($id)
+    public function handleProviderCallback()
     {
         $user = Socialite::driver('facebook')->user();
 
