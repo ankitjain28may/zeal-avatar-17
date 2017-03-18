@@ -36,7 +36,7 @@ class SocialController extends Controller
 
         // OAuth One Providers
         $token = $user->token;
-        $tokenSecret = $user->tokenSecret;
+        // $tokenSecret = $user->tokenSecret;
 
         // All Providers
         // $user->getId();
