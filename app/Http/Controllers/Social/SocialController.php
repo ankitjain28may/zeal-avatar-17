@@ -45,15 +45,13 @@ class SocialController extends Controller
         $email = $user->getEmail();
         $avatar = $user->getAvatar();
 
-
-
-        $img = Image::make('https://graph.facebook.com/v2.8/'.$id.'/picture?width=603&height=603');
+        $img = Image::make('https://graph.facebook.com/v2.8/'.$id.'/picture?width=500&height=500');
 
         $height = $img->height();
         $width = $img->width();
 
 
-        $overlay = Image::make('https://raw.githubusercontent.com/ankitjain28may/Zealicon-Profile-pic/master/dall.png')->resize(603,603);
+        $overlay = Image::make('https://raw.githubusercontent.com/ankitjain28may/Zealicon-Profile-pic/master/dall.png')->resize(500,500);
 
         $height1 = $overlay->height();
         $width1 = $overlay->width();
@@ -65,7 +63,9 @@ class SocialController extends Controller
             "overlay-w" => $width1
         ]);*/
 
-        $img->insert($overlay)->resize(300, 300);
+        $img->insert($overlay)->resize(500, 500);
+
+        $img->save('public/bar.jpg');
 
         return $img->response('jpg');
 
