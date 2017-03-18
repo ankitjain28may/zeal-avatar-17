@@ -36,19 +36,17 @@ class SocialController extends Controller
 
         // OAuth One Providers
         $token = $user->token;
-        // $tokenSecret = $user->tokenSecret;
 
         // All Providers
-        // $user->getId();
-        // $user->getNickname();
-        // $user->getName();
-        // $user->getEmail();
-        // $user->getAvatar();
-
-        return $user->getAvatar();
+        $id = $user->getId();
+        $nickname = $user->getNickname();
+        $name = $user->getName();
+        $email = $user->getEmail();
+        $avatar = $user->getAvatar();
 
 
-        $img = Image::make('https://scontent-lht6-1.xx.fbcdn.net/v/t1.0-9/15268057_779812755489882_6749697980395923366_n.jpg?oh=9c959caa67950f6daccb614a3fbf60b6&oe=5962E962');
+
+        $img = Image::make('https://graph.facebook.com/v2.8/'.$id.'/picture?width=603&height=603');
 
         $height = $img->height();
         $width = $img->width();
