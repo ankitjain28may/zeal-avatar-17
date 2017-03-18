@@ -65,7 +65,7 @@ class SocialController extends Controller
 
         $img->insert($overlay)->resize(500, 500);
 
-        $img->save('public/bar.jpg');
+        $img->save(storage_path('app/public/bar.jpg'));
 
         return $img->response('jpg');
 
