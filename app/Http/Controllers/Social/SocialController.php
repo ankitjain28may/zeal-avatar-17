@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Social;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Socialite;
+use Image;
 
 class SocialController extends Controller
 {
