@@ -28,44 +28,27 @@ class SocialController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
 
-        // $user->token;
-
         // OAuth Two Providers
         $token = $user->token;
         $refreshToken = $user->refreshToken; // not always provided
         $expiresIn = $user->expiresIn;
 
-        // OAuth One Providers
-        $token = $user->token;
-
         // All Providers
         $id = $user->getId();
-        $nickname = $user->getNickname();
         $name = $user->getName();
-        $email = $user->getEmail();
-        $avatar = $user->getAvatar();
 
-        $img = Image::make('https://graph.facebook.com/v2.8/'.$id.'/picture?width=500&height=500');
+        $img = Image::make('https://graph.facebook.com/v2.8/'.$id.'/picture?type=large');
 
         $height = $img->height();
         $width = $img->width();
 
 
-        $overlay = Image::make('https://raw.githubusercontent.com/ankitjain28may/Zealicon-Profile-pic/master/dall.png')->resize(500,500);
+        $overlay = Image::make(storage_path('app/public/Z16.png'))->resize($width, $height);
 
-        $height1 = $overlay->height();
-        $width1 = $overlay->width();
 
-        /*return var_dump([
-            "image-h" => $height,
-            "image-w" => $width,
-            "overlay-h" => $height1,
-            "overlay-w" => $width1
-        ]);*/
+        $img->insert($overlay);
 
-        $img->insert($overlay)->resize(500, 500);
-
-        $img->save(storage_path('app/public/bar.jpg'));
+        $img->save(storage_path('app/share/'.$id.'.jpg'));
 
         return $img->response('jpg');
 
